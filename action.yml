@@ -1,14 +1,17 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'PyWash your life'
+description: 'Time to clean your code'
 inputs:
-  who-to-greet:  # id of input
+  who-to-greet: 
     description: 'Who to greet'
     required: true
     default: 'World'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
+branding:
+  icon: 'shield'
+  color: 'green'
 runs:
   using: 'docker'
   image: 'Dockerfile'
