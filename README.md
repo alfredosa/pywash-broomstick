@@ -16,6 +16,6 @@ The time we greeted you.
 
 ## Example usage
 
-uses: actions/hello-world-docker-action@v2
+uses: alfredosa/pywash-broomstick@main
 with:
   who-to-greet: 'Mona the Octocat'
