@@ -4,7 +4,10 @@ echo "Running isort $* 🚀"
 # vs $* that is all params as string
 isort_result=$(isort "$@")
 
-# capture the latest exit code 
+echo "ISORT_RESULT<<EOF" >> $GITHUB_ENV
+echo "$isort_result" >> $GITHUB_ENV
+echo "EOF" >> $GITHUB_ENV
+
 exit_code=$?
 
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
