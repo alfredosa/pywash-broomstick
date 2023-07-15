@@ -5,7 +5,8 @@
         "pattern": [
           {
             "regexp": "ERROR: (.+)$",
-            "message": 5
+            "file": 1,
+            "line": 2
           }
         ]
       }
