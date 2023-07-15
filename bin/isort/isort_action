@@ -6,6 +6,8 @@ isort_result=$(isort "$@")
 
 exit_code=$?
 
+printf "${isort_result}"
+
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 {
     echo "isort-output<<${DELIMITER}"
@@ -13,9 +15,6 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
     echo "${DELIMITER}"
 } >> "${GITHUB_OUTPUT}"
 
-
-color='\033[0;33m'
-printf "${color} ${isort_result}"
 echo "Isort completed! ✅"
 
 exit $exit_code
