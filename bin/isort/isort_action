@@ -1,4 +1,4 @@
-echo "::group:Running isort $* 🚀"
+echo "Running isort $* 🚀"
 
 # $@ ensures that all positional params are passed as individual arguments 
 # vs $* that is all params as string
@@ -15,6 +15,5 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 
 echo "${isort_result}"
 echo "Isort completed! ✅"
-echo "::endgroup::"
 
 exit $exit_code
