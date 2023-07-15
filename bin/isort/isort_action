@@ -11,7 +11,7 @@ exit_code=$?
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 {
     echo "isort-output<<${DELIMITER}"
-    echo -e "${isort_output//ERROR/\033[31mERROR\033[0m}"
+    echo -e "${isort_result}"
     echo "${DELIMITER}"
 } >> "${GITHUB_OUTPUT}"
 

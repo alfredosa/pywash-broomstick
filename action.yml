@@ -42,7 +42,11 @@ runs:
         ${{ inputs.isort-version }}
         ${{ inputs.requirements-files }}
       shell: bash
+    - run: echo "::add-matcher::${{ github.action_path }}/matchers/isort-matcher.json"
+      shell: bash
     - id: run-isort
       run:
         ${{ github.action_path }}/bin/isort/isort_action --profile ${{ inputs.profile }} ${{ inputs.configuration }} ${{ inputs.sort-paths }}
+      shell: bash
+    - run: echo "::remove-matcher owner=isort::"
       shell: bash
