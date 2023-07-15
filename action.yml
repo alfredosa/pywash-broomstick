@@ -27,6 +27,20 @@ inputs:
     required: false
     default: null
 
+  mypy-path:
+    description: path to mypy config (.cfg, .ini)
+    required: false
+    default: null
+  
+  mypy-config:
+    description: path to mypy config (.cfg, .ini)
+    required: false
+    default: null
+
+  mypy-args:
+    description: path to mypy arguments such as 
+    required: false
+    default: null
 outputs:
   isort-result:
     description: isort result
@@ -38,7 +52,7 @@ runs:
     - run: ${{ github.action_path }}/bin/isort/python_finder
       shell: bash
     - run: >
-        ${{ github.action_path }}/bin/isort/requirements
+        ${{ github.action_path }}/bin/requirements/requirements
         ${{ inputs.isort-version }}
         ${{ inputs.requirements-files }}
       shell: bash
@@ -47,8 +61,6 @@ runs:
     - id: run-isort
       run: ${{ github.action_path }}/bin/isort/isort_action --profile ${{ inputs.profile }} ${{ inputs.configuration }} ${{ inputs.sort-paths }}
       shell: bash
-    - id: print-results
-      run: echo "${{ steps.run-isort.outputs.isort-output }}"
-      shell: bash
     - run: echo "::remove-matcher owner=isort::"
       shell: bash
+    
