@@ -1,5 +1,6 @@
-import streamlit as st
 import random
+
+import streamlit as st
 
 # Generate a random number
 random_number = random.randint(1, 100)
