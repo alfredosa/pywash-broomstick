@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pywash-broomstick"
+version = "0.1.0"
+description = "python code linter, formatter and checker"
+authors = ["Alfredo Suarez <31414624+alfredosa@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "pywash_broomstick"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+isort = "^5.12.0"
+mypy = "^1.4.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

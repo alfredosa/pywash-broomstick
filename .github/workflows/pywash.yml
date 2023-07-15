@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  pywash-broomstick:
+    runs-on: ubuntu-latest
+    name: Pywash CI/CD
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Pywash Broomstick
+        id: CI
+        uses: ./
+        with:
+          isort-version: latest
+          sort-paths: .
+          configuration: --check-only --diff
+          requirements-files: ./requirements.txt
+          profile: black

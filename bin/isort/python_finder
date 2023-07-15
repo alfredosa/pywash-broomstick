@@ -1,0 +1,10 @@
+python3 -V > /dev/null 2>&1 || (echo "python3 is not available. Use the setup-python action" && exit 1)
+
+major_version=$(python3 -c 'import sys; print(sys.version_info[0])')
+minor_version=$(python3 -c 'import sys; print(sys.version_info[1])')
+
+#Python 3.8 is needed for at least isort, mypy
+if [ "$major_version" -lt 3 ] || [ "$minor_version" -lt 8 ]; then
+    echo "🔥 Minimum supported version of python is 3.6, but $(python3 -V) is installed 🔥"
+    exit 1
+fi

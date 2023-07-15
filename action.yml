@@ -1,19 +1,52 @@
 # action.yml
-name: 'PyWash your life'
+name: 'PyWash your coding life'
 description: 'Time to clean your code'
 inputs:
-  who-to-greet: 
-    description: 'Who to greet'
-    required: true
-    default: 'World'
+  isort-version:
+    description: Version of isort to use
+    required: false
+    default: null
+
+  sort-paths:
+    description: files or directories to sort
+    required: false
+    default: null
+
+  profile:
+    description: profile to run isort with
+    required: false
+    default: black
+
+  configuration:
+    description: isort configuration options
+    required: false
+    default: --check-only --diff
+
+  requirements-files:
+    description: path(s) to requirements, e.g requirements.txt requirements-dev.txt
+    required: false
+    default: null
+
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
-branding:
-  icon: 'shield'
-  color: 'green'
+  isort-result:
+    description: isort result
+    value: ${{ steps.run-isort.outputs.isort-output }}
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+  using: composite
+  steps:
+    - run: ${{ github.action_path }}/bin/ensure_python
+      shell: bash
+    - run: >
+        ${{ github.action_path }}/bin/isort/requirements
+        ${{ inputs.isort-version }}
+        ${{ inputs.requirements-files }}
+      shell: bash
+    - run: echo "::add-matcher::${{ github.action_path }}/matchers/isort-matcher.json"
+      shell: bash
+    - id: run-isort
+      run:
+        ${{ github.action_path }}/bin/isort/isort_action --profile ${{ inputs.profile }} ${{ inputs.configuration }} ${{ inputs.sort-paths }}
+      shell: bash
+    - run: echo "::remove-matcher owner=isort::"
+      shell: bash
