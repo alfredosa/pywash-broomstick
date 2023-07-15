@@ -19,6 +19,4 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 
 echo "Isort completed! ✅"
 
-echo "${isort-output}"
-
 exit $exit_code
