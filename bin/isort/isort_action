@@ -1,18 +1,16 @@
-echo "Running isort 🚀 $*"
-isort "$@" > isort_output.txt
-isort_result=$(cat isort_output.txt)
-echo "ISORT_RESULT<<EOF" >> $GITHUB_ENV
-echo $isort_result >> $GITHUB_ENV 
-echo "EOF" >> $GITHUB_ENV
+echo "Running isort $* 🚀"
 
+# $@ ensures that all positional params are passed as individual arguments 
+# vs $* that is all params as string
+isort_result=$(isort "$@")
 
-# Capture the latest exit code
+# capture the latest exit code 
 exit_code=$?
 
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 {
     echo "isort-output<<${DELIMITER}"
-    echo -e "${isort_result}"
+    echo "${isort_result}"
     echo "${DELIMITER}"
 } >> "${GITHUB_OUTPUT}"
 
