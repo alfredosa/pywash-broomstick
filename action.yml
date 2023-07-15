@@ -35,7 +35,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - run: ${{ github.action_path }}/bin/ensure_python
+    - run: ${{ github.action_path }}/bin/isort/python_finder
       shell: bash
     - run: >
         ${{ github.action_path }}/bin/isort/requirements
