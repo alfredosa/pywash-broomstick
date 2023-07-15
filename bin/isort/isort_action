@@ -11,12 +11,8 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
     echo "isort-output<<${DELIMITER}"
     echo "${isort_result}"
     echo "${DELIMITER}"
-} >> "${GITHUB_OUTPUT}"
+} >> $GITHUB_OUTPUT
 
 echo "Isort completed! ✅"
-
-echo "ISORT_RESULT<<EOF" >> $GITHUB_ENV
-echo "$isort_result" >> $GITHUB_ENV
-echo "EOF" >> $GITHUB_ENV
 
 exit $exit_code
