@@ -1,9 +1,9 @@
 echo "Running isort 🚀 $*"
-isort_result=$(isort "$@")
-
- echo "ISORT_RESULT<<EOF" >> $GITHUB_ENV
- echo $isort_result >> $GITHUB_ENV 
- echo "EOF" >> $GITHUB_ENV
+isort "$@" > isort_output.txt
+isort_result=$(cat isort_output.txt)
+echo "ISORT_RESULT<<EOF" >> $GITHUB_ENV
+echo $isort_result >> $GITHUB_ENV 
+echo "EOF" >> $GITHUB_ENV
 
 
 # Capture the latest exit code
