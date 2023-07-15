@@ -1,11 +1,7 @@
 echo "Running isort 🚀 $*"
-
-# $@ ensures that all positional params are passed as individual arguments 
-# vs $* that is all params as string
 isort_result=$(isort "$@")
 
-
-# capture the latest exit code 
+# Capture the latest exit code
 exit_code=$?
 
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
