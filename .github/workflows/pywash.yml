@@ -14,6 +14,6 @@ jobs:
         with:
           isort-version: latest
           sort-paths: .
-          configuration: --check-only
+          configuration: --check-only --diff
           requirements-files: ./requirements.txt
           profile: black
