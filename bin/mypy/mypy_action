@@ -1,20 +1,13 @@
 #!/bin/bash
 mypy_path=$1
 mypy_flags=$2
-requirements_file=$4
-
-# install requirements_file, if defined
-if [ ! -z "$requirements_file" ]; then
-    pip install -r /requirements.txt
-else
-    pip install -r "$requirements_file"
-fi
+mypy_config=$3
 
 output_file=/tmp/action.out
-
-# get mypy version
 echo "$(mypy --version)"
-mypy $mypy_flags --show-column-numbers --hide-error-context $mypy_path | tee "${output_file}"
+mypy $mypy_flags --show-column-numbers --hide-error-context --config-file $mypy_config $mypy_path | tee "${output_file}"
+
+# read pipe status for ending action
 exit_code="${PIPESTATUS[0]}"
 
 python bin/mypy/mypy.py "${output_file}"

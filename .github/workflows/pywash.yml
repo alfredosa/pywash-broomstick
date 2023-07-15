@@ -17,3 +17,5 @@ jobs:
           configuration: --check-only --diff
           requirements-files: ./requirements.txt
           profile: black
+          mypy-path: .
+          mypy-config: /bin/mypy/mypy.ini
