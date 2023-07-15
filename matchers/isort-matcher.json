@@ -4,9 +4,8 @@
         "owner": "isort",
         "pattern": [
           {
-            "regexp": "ERROR: (.+) (Imports are incorrectly sorted and/or formatted.)$",
-            "file": 1,
-            "message": 2
+            "regexp": "ERROR: (.+)$",
+            "message": 1
           }
         ]
       }
