@@ -15,7 +15,7 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 
 
 color='\033[0;33m'
-echo "${color} ${isort_result}"
+printf "${color} ${isort_result}"
 echo "Isort completed! ✅"
 
 exit $exit_code
