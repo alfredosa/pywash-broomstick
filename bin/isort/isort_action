@@ -6,6 +6,10 @@ isort_result=$(isort "$@")
 
 exit_code=$?
 
+echo "ISORT_RESULT<<EOF" >> $GITHUB_ENV
+echo "$isort_result" >> $GITHUB_ENV
+echo "EOF" >> $GITHUB_ENV
+
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 {
     echo "isort-output<<${DELIMITER}"
