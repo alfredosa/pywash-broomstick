@@ -48,5 +48,8 @@ runs:
       run:
         ${{ github.action_path }}/bin/isort/isort_action --profile ${{ inputs.profile }} ${{ inputs.configuration }} ${{ inputs.sort-paths }}
       shell: bash
+    - name: Show isort output
+      run: echo "$isort-result"
+      shell: bash
     - run: echo "::remove-matcher owner=isort::"
       shell: bash
