@@ -13,7 +13,9 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
     echo "${DELIMITER}"
 } >> "${GITHUB_OUTPUT}"
 
-echo "${isort_result}"
+
+color='\033[0;33m'
+echo "${color} ${isort_result}"
 echo "Isort completed! ✅"
 
 exit $exit_code
