@@ -1,11 +1,10 @@
 #!/bin/bash
 mypy_path=$1
 mypy_flags=$2
-mypy_config=$3
 
 output_file=/tmp/action.out
 echo "$(mypy --version)"
-mypy $mypy_flags --show-column-numbers --hide-error-context --config-file $mypy_config $mypy_path | tee "${output_file}"
+mypy $mypy_flags --show-column-numbers --hide-error-context $mypy_path | tee "${output_file}"
 
 # read pipe status for ending action
 exit_code="${PIPESTATUS[0]}"
