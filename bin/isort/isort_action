@@ -1,20 +1,17 @@
-echo "ISORT_RESULT<<EOF" >> $GITHUB_ENV
 echo "Running isort $* 🚀"
 
 # $@ ensures that all positional params are passed as individual arguments 
 # vs $* that is all params as string
-isort_result=$(isort "$@") >> $GITHUB_ENV
+isort_result=$(isort "$@")
 
 exit_code=$?
-
-echo "EOF" >> $GITHUB_ENV
 
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 {
     echo "isort-output<<${DELIMITER}"
     echo "${isort_result}"
     echo "${DELIMITER}"
-} >> $GITHUB_OUTPUT
+} >> "${GITHUB_OUTPUT}"
 
 echo "Isort completed! ✅"
 
