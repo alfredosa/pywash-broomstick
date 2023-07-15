@@ -47,7 +47,7 @@ runs:
     - id: run-isort
       run: ${{ github.action_path }}/bin/isort/isort_action --profile ${{ inputs.profile }} ${{ inputs.configuration }} ${{ inputs.sort-paths }}
       shell: bash
-    -id: print-results
+    - id: print-results
       run: echo "${{ steps.run-isort.outputs.isort-output }}"
       shell: bash
     - run: echo "::remove-matcher owner=isort::"
