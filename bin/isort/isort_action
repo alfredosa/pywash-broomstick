@@ -1,4 +1,4 @@
-echo "::group::Running isort 🚀 $*"
+echo "Running isort 🚀 $*"
 
 # $@ ensures that all positional params are passed as individual arguments 
 # vs $* that is all params as string
@@ -11,12 +11,10 @@ exit_code=$?
 DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 {
     echo "isort-output<<${DELIMITER}"
-    echo "${isort_result}"
+    echo -e "${isort_output//ERROR/\033[31mERROR\033[0m}"
     echo "${DELIMITER}"
 } >> "${GITHUB_OUTPUT}"
 
-echo -e "${isort_output//ERROR/\033[31mERROR\033[0m}"
 echo "Isort completed! ✅"
-echo "::endgroup::"
 
 exit $exit_code
