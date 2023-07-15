@@ -18,4 +18,4 @@ jobs:
           requirements-files: ./requirements.txt
           profile: black
           mypy-path: .
-          mypy-config: ./bin/mypy/mypy.ini
+          mypy-config: ./mypy.ini
