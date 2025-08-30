@@ -1,5 +1,9 @@
 # pywash-broomstick
 
+> [!WARNING]
+> This project is now officially migrated to https://git.alfie.news/pywash-broomstick
+> I will likely delete this sometime.
+
 This action runs isort and mypy on your code, and fails if the commands fail.
 
 inputs incldue 
